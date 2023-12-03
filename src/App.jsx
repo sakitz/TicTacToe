@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import confetti from 'canvas-confetti'
 
 import { Square } from './components/Square.jsx'
@@ -41,6 +41,11 @@ function App () {
     // cambiar el turno
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
+    // guardar aqui partida
+    saveGameToStorage({
+      board: newBoard,
+      turn: newTurn
+    })
     // revisar si hay ganador
     const newWinner = checkWinnerFrom(newBoard)
     if (newWinner) {
@@ -50,14 +55,6 @@ function App () {
       setWinner(false) // empate
     }
   }
-
-  useEffect(() => {
-    //este console.log se ejecutara cuando haya un ganador(winner)si no le pongo algun parametro como winner se ejecutara de nuevo cuando se actualize el componente 
-    saveGameToStorage({
-        board: newBoard,
-        turn: newTurn
-      })
-  }, [turn, board] )
 
   return (
     <main className='board'>
