@@ -1,6 +1,7 @@
-import { Square } from './Square.jsx'
+import  { Square} from './Square.jsx'
 
-export function WinnerModal ({ winner, resetGame }) {
+// eslint-disable-next-line react/prop-types 
+export function WinnerModal ({ winner, resetGame}) {
   if (winner === null) return null
 
   const winnerText = winner === false ? 'Empate' : 'Ganó:'
@@ -14,9 +15,9 @@ export function WinnerModal ({ winner, resetGame }) {
           {winner && <Square>{winner}</Square>}
         </header>
 
-        <footer>
+         <footer>
           <button onClick={resetGame}>Empezar de nuevo</button>
-        </footer>
+        </footer> 
       </div>
     </section>
   )
